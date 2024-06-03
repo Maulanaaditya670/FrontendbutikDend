@@ -20,12 +20,16 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if ($request->email === 'admin@example.com' && $request->password === 'password') {
+        $response = Http::post('http://localhost:8001/api/login',[
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+        if ($response->successful()){
             return redirect()->route('home');
         }
-
+        
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'emai' => 'Email Salah',
         ]);
     }
 }

@@ -96,7 +96,7 @@
     </div>
     <div class="main-content">
         <h1>Administrator</h1>
-        <p>Selamat datang, Deden Ihsan Fauzi</p>
+        <p>Selamat datang, Admin</p>
     </div>
 </body>
 </html>
