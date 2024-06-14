@@ -5,15 +5,26 @@ use App\Http\Controllers\BarangController;
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/homep', function () {
+    return view('homep');
+});
 
-Route::get('/barangs', [BarangController::class, 'index'])->name('barangs.index');
-Route::get('/barangs/create', [BarangController::class, 'create'])->name('barangs.create');
-Route::post('/barangs', [BarangController::class, 'store'])->name('barangs.store');
-Route::get('/barangs/{id}/edit', [BarangController::class, 'edit'])->name('barangs.edit');
-Route::put('/barangs/{id}', [BarangController::class, 'update'])->name('barangs.update');
-Route::delete('/barangs/{id}', [BarangController::class, 'destroy'])->name('barangs.destroy');
+// routes/web.php
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+Route::get('/list-produk', function () {
+    return view('list-produk');
+});
+
+Route::get('/barangs', [BarangController::class, 'index'])->name('barang.index');
+Route::get('/barangs/create', [BarangController::class, 'create'])->middleware('auth.api')->name('barang.create');
+Route::post('/barangs', [BarangController::class, 'store'])->middleware('auth.api')->name('barang.store');
+Route::get('/barangs/{id}/edit', [BarangController::class, 'edit'])->middleware('auth.api')->name('barang.edit');
+Route::put('/barangs/{id}', [BarangController::class, 'update'])->middleware('auth.api')->name('barang.update');
+Route::delete('/barangs/{id}', [BarangController::class, 'destroy'])->middleware('auth.api')->name('barang.destroy');
 
 
 Route::get('/home', function () {

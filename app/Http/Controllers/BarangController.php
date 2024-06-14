@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Barangs;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -9,109 +9,68 @@ class BarangController extends Controller
 {
     public function index()
     {
-        // Fetch data tanpa autentikasi
         $response = Http::get('http://localhost:8002/api/barangs');
-        $barangs = $response->json();
-
-        return view('barangs.index', compact('barangs'));
+        if ($response->successful()){
+            $barangs = $response->json();
+            return view ('barangs.index',compact('barangs'));
+        } else {
+            return view ('barangs.index')->with('error','Gagal mengambil data barang dari API');
+        }
     }
 
     public function create()
     {
-        return view('barangs.create');
+        return view('barang.form');
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'deskripsi' => 'required',
+            'harga' => 'required|numeric',
+        ]);
 
-public function store(Request $request)
-{
-    // Validate the incoming request
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'description' => 'required|string|max:255',
-        'price' => 'required|numeric',
-        'size' => 'required|string|max:255',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-    ]);
+        $response = Http::withToken(session('api_token'))->post('http://api.example.com/barangs', [
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+            'harga' => $request->harga,
+        ]);
 
-    // Handle the image upload
-    if ($request->hasFile('image')) {
-        $imageName = time() . '.' . $request->image->extension();
-        $request->image->move(public_path('images'), $imageName);
-    } else {
-        $imageName = null;
+        return redirect()->route('barang.index');
     }
-
-    // Prepare data to send to the API
-    $data = [
-        'name' => $request->name,
-        'description' => $request->description,
-        'price' => $request->price,
-        'size' => $request->size,
-        'image' => $imageName,
-    ];
-
-    // Send the data to the API
-    $response = Http::post('http://localhost:8002/api/barangs', $data);
-
-    // Check if the request was successful
-    if ($response->successful()) {
-        // Optionally, you can handle successful response here
-        return redirect()->route('barangs.index')->with('success', 'Barang created successfully.');
-    } else {
-        // Handle the case when the request fails
-        return back()->withInput()->withErrors('Failed to create Barang. Please try again.');
-    }
-}
-
 
     public function edit($id)
     {
-        $response = Http::get("http://localhost:8002/api/barangs/{$id}");
-
-        if ($response->successful()) {
-            $barang = $response->json();
-            return view('barangs.edit', compact('barang'));
+        $response = Http::get("http://api.example.com/barangs/{$id}");
+        $barang = $response->json();
+        if (is_array($barang)) {
+            $barang = (object)$barang; // Convert array to object
         }
-
-        return back()->withErrors(['error' => 'Failed to fetch barang details.']);
+        return view('barang.form', ['barang' => $barang]);
     }
 
     public function update(Request $request, $id)
     {
-        // Handle file upload
-        $multipartData = [];
-        foreach ($request->except('image') as $key => $value) {
-            $multipartData[] = [
-                'name' => $key,
-                'contents' => $value,
-            ];
-        }
+        $request->validate([
+            'nama' => 'required',
+            'deskripsi' => 'required',
+            'harga' => 'required|numeric',
+        ]);
 
-        if ($request->hasFile('image')) {
-            $multipartData[] = [
-                'name' => 'image',
-                'contents' => fopen($request->file('image')->getPathname(), 'r'),
-                'filename' => $request->file('image')->getClientOriginalName(),
-            ];
-        }
+        $response = Http::withToken(session('api_token'))->put("http://api.example.com/barangs/{$id}", [
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+            'harga' => $request->harga,
+        ]);
 
-        $response = Http::asMultipart()->post("http://localhost:8002/api/barangs/{$id}", $multipartData);
-
-        if ($response->successful()) {
-            return redirect()->route('barangs.index');
-        }
-
-        return back()->withErrors(['error' => 'Failed to update barang.']);
+        return redirect()->route('barang.index');
     }
 
     public function destroy($id)
     {
-        $response = Http::delete("http://localhost:8002/api/barangs/{$id}");
+        $response = Http::withToken(session('api_token'))->delete("http://api.example.com/barangs/{$id}");
 
-        if ($response->successful()) {
-            return redirect()->route('barangs.index');
-        }
-
-        return back()->withErrors(['error' => 'Failed to delete barang.']);
+        return redirect()->route('barang.index');
     }
 }
