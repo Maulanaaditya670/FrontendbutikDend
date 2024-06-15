@@ -54,23 +54,28 @@
             border-radius: 10px;
             margin-top: 20px;
         }
+
+        .profile-body img{
+            width: 300px;
+            
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="homep">
-            <img src="logo.png" alt="Logo">
+            <img src="{{ asset('images/logoweb.png') }}" alt="Logo">
         </a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="homep.blade.php">Home</a>
+                    <a class="nav-link" href="{{ route('homep') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/profile">Profil</a>
+                    <a class="nav-link active" href="{{ route('profile') }}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/products">List Produk</a>
+                    <a class="nav-link" href="{{ route('list-produk') }}">List Poduk</a>
                 </li>
             </ul>
             <form class="form-inline ml-auto search-box">
@@ -86,7 +91,7 @@
         <div class="profile-body">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="path/to/foto-butik.jpg" class="img-fluid rounded" alt="Foto Butik">
+                    <img src="{{ asset('images/logoweb.png') }}" class="img-fluid rounded" alt="Foto Butik">
                 </div>
                 <div class="col-md-8">
                     <h3>Butik Dend</h3>

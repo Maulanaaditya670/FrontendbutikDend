@@ -47,6 +47,14 @@ Route::get('/listproduk', function () {
     return view('listproduk');
 })->name('listproduk');;
 
+Route::get('/homep', function () {
+    return view('homep');
+})->name('homep');
+
+Route::get('/list-produk', function () {
+    return view('list-produk');
+})->name('list-produk');;
+
 Route::view('/listgamis', 'listgamis')->name('listgamis');
 Route::view('/listkoko', 'listkoko')->name('listkoko');
 Route::view('/listhijab', 'listhijab')->name('listhijab');

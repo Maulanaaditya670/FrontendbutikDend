@@ -76,18 +76,18 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="#">
-            <img src="logo.png" alt="Logo">
+            <img src="{{ asset('images/logoweb.png') }}" alt="Logo">
         </a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{{ route('homep') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profil</a>
+                    <a class="nav-link" href="{{ route('profile') }}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">List Produk</a>
+                    <a class="nav-link active" href="{{ route('list-produk') }}">List Poduk</a>
                 </li>
             </ul>
             <form class="form-inline ml-auto search-box">
