@@ -23,12 +23,13 @@
         }
         .login-logo {
             width: 100px;
-            height: 100px;
-            margin-bottom: 20px;
-            border-radius: 50%;
-            background: url('/path/to/logo.png') no-repeat center center;
-            background-size: cover;
+            height: 20px;
         }
+
+        .login-container img{
+            width: 100px; /* Adjust the width as needed */
+        }
+        
         .form-group {
             margin-bottom: 15px;
             text-align: left;
@@ -48,6 +49,7 @@
 <body>
     <div class="login-container">
         <div class="login-logo"></div>
+        <img src="{{ asset('images/logoweb.png') }}" alt="Profile Picture">
         <form action="{{ route('login.post') }}" method="POST">
             @csrf
             <div class="form-group">
