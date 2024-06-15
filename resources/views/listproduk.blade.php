@@ -117,9 +117,9 @@
     <div class="main-content">
         <h1>List Produk</h1>
         <div class="product-list">
-            <div class="product-item"><a href="{{ route('listgamis', ['category' => 'gamis']) }}">Gamis</a></div>
-            <div class="product-item"><a href="{{ route('listkoko', ['category' => 'koko']) }}">Koko</a></div>
-            <div class="product-item"><a href="{{ route('listhijab', ['category' => 'hijab']) }}">Hijab</a></div>
+            <div class="product-item"><a href="{{ route('barangs.index', ['category' => 'gamis']) }}">Gamis</a></div>
+            <div class="product-item"><a href="{{ route('hijabs.index', ['category' => 'hijab']) }}">Hijab</a></div>
+            <div class="product-item"><a href="{{ route('kokos.index', ['category' => 'koko']) }}">Koko</a></div>
         </div>
     </div>
 </body>

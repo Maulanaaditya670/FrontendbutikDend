@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Gamis</title>
+    <title>List Hijab</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -95,17 +95,17 @@
             </div>
         </div>
         <div class="menu">
-            <a href="{{ route('dashboard') }}" >Dashboard</a>
-            <a href="{{ route('homeboard') }}" >Home</a>
-            <a href="{{ route('profile') }}" >Profile</a>
-            <a href="{{ route('listproduk') }}" >List Produk</a>
-            <a href="{{ route('login') }}" >Logout</a>
+            <a href="{{ route('dashboard') }}">Dashboard</a>
+            <a href="{{ route('homeboard') }}">Home</a>
+            <a href="{{ route('profile') }}">Profile</a>
+            <a href="{{ route('listproduk') }}">List Produk</a>
+            <a href="{{ route('login') }}">Logout</a>
         </div>
     </div>
     <div class="main-content">
-        <h1>List Produk > Gamis</h1>
+        <h1>List Produk > Hijab</h1>
         <div class="table-container">
-            <a href="{{ route('tambahgamis') }}" class="btn btn-primary">Tambah</a>
+            <a href="{{ route('tambahhijab') }}" class="btn btn-primary">Tambah</a>
             <button class="btn btn-danger">Delete</button>
             <input type="text" placeholder="Search" style="float: right; margin-bottom: 10px;">
             <table class="table table-bordered">
@@ -119,13 +119,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($barangs as $index => $barang)
+                    @foreach ($hijabs as $index => $hijab)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $barang['name'] }}</td>
-                        <td>{{ $barang['kode'] }}</td>
-                        <td>{{ $barang['price'] }}</td>
-                        <td>{{ $barang['size'] }}</td>
+                        <td>{{ $hijab['name'] }}</td>
+                        <td>{{ $hijab['kode'] }}</td>
+                        <td>{{ $hijab['price'] }}</td>
+                        <td>{{ $hijab['size'] }}</td>
                     </tr>
                     @endforeach
                 </tbody>
