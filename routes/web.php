@@ -31,3 +31,20 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
+Route::get('/homeboard', function () {
+    return view('homeboard');
+});
+Route::get('/tambahposting', function () {
+    return view('tambahposting');
+});
+Route::get('/listproduk', function () {
+    return view('listproduk');
+});
+
+Route::view('/listgamis', 'listgamis')->name('listgamis');
+Route::view('/listkoko', 'listkoko')->name('listkoko');
+Route::view('/listhijab', 'listhijab')->name('listhijab');
+
+Route::view('/tambahgamis', 'tambahgamis')->name('tambahgamis');
+Route::view('/tambahkoko', 'tambahkoko')->name('tambahkoko');
+Route::view('/tambahhijab', 'tambahhijab')->name('tambahhijab');
