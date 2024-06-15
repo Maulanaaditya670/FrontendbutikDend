@@ -87,11 +87,11 @@
             </div>
         </div>
         <div class="menu">
-            <a href="#">Dashboard</a>
-            <a href="#">Home</a>
-            <a href="#">Profil</a>
-            <a href="#">List Produk</a>
-            <a href="#">Logout</a>
+            <a href="{{ route('dashboard') }}" >Dashboard</a>
+            <a href="{{ route('homeboard') }}" >Home</a>
+            <a href="{{ route('profile') }}" >Profile</a>
+            <a href="{{ route('listproduk') }}" >List Produk</a>
+            <a href="{{ route('login') }}" >Logout</a>
         </div>
     </div>
     <div class="main-content">

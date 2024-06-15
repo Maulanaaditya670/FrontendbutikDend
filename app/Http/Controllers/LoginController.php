@@ -26,7 +26,7 @@ class LoginController extends Controller
             'password' => $request->password,
         ]);
         if ($response->successful()){
-            return redirect()->route('home');
+            return redirect()->route('dashboard');
         }
         
         return back()->withErrors([

@@ -27,19 +27,25 @@ Route::put('/barangs/{id}', [BarangController::class, 'update'])->middleware('au
 Route::delete('/barangs/{id}', [BarangController::class, 'destroy'])->middleware('auth.api')->name('barang.destroy');
 
 
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 Route::get('/homeboard', function () {
     return view('homeboard');
-});
+})->name('homeboard');
+
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
+
 Route::get('/tambahposting', function () {
     return view('tambahposting');
 });
+
 Route::get('/listproduk', function () {
     return view('listproduk');
-});
+})->name('listproduk');;
 
 Route::view('/listgamis', 'listgamis')->name('listgamis');
 Route::view('/listkoko', 'listkoko')->name('listkoko');
