@@ -70,7 +70,7 @@
                     <a class="nav-link" href="{{ route('profile') }}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('list-produk') }}">List Poduk</a>
+                    <a class="nav-link" href="{{ route('list-produk') }}">List Produk</a>
                 </li>
             </ul>
             <form class="form-inline ml-auto search-box">

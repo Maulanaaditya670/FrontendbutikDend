@@ -13,7 +13,7 @@
         }
         .navbar {
             background-color: #00aaff;
-            padding: 10px;
+            padding: 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -22,6 +22,9 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            right: 25px;
         }
         .sidebar {
             background-color: #f8f9fa;
@@ -107,7 +110,7 @@
 </head>
 <body>
     <div class="navbar">
-        <img src="/path/to/profile.jpg" alt="Profile">
+        <img src="{{ asset('images/user.png') }}" alt="Profile">
     </div>
     <div class="sidebar">
         <div class="profile">

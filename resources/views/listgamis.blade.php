@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Gamis</title>
+    <title>List Koko</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -13,7 +13,7 @@
         }
         .navbar {
             background-color: #00aaff;
-            padding: 10px;
+            padding: 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -22,6 +22,9 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            right: 25px;
         }
         .sidebar {
             background-color: #f8f9fa;
@@ -81,7 +84,7 @@
 </head>
 <body>
     <div class="navbar">
-        <img src="/path/to/profile.jpg" alt="Profile">
+        <img src="{{ asset('images/user.png') }}" alt="Profile">
     </div>
     <div class="sidebar">
         <div class="profile">
@@ -92,11 +95,11 @@
             </div>
         </div>
         <div class="menu">
-            <a href="#">Dashboard</a>
-            <a href="#">Home</a>
-            <a href="#">Profil</a>
-            <a href="#">List Produk</a>
-            <a href="#">Logout</a>
+            <a href="{{ route('dashboard') }}" >Dashboard</a>
+            <a href="{{ route('homeboard') }}" >Home</a>
+            <a href="{{ route('profile') }}" >Profile</a>
+            <a href="{{ route('listproduk') }}" >List Produk</a>
+            <a href="{{ route('login') }}" >Logout</a>
         </div>
     </div>
     <div class="main-content">

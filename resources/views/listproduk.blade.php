@@ -13,7 +13,7 @@
         }
         .navbar {
             background-color: #00aaff;
-            padding: 10px;
+            padding: 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -22,6 +22,9 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            right: 25px;
         }
         .sidebar {
             background-color: #f8f9fa;
@@ -85,11 +88,15 @@
             text-align: center;
             flex: 1;
         }
+        .product-list .product-item a {
+            color: #fff;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <img src="/path/to/profile.jpg" alt="Profile">
+        <img src="{{ asset('images/user.png') }}" alt="Profile">
     </div>
     <div class="sidebar">
         <div class="profile">
@@ -110,9 +117,9 @@
     <div class="main-content">
         <h1>List Produk</h1>
         <div class="product-list">
-            <div class="product-item">Gamis</div>
-            <div class="product-item">Koko</div>
-            <div class="product-item">Hijab</div>
+            <div class="product-item"><a href="{{ route('listgamis', ['category' => 'gamis']) }}">Gamis</a></div>
+            <div class="product-item"><a href="{{ route('listkoko', ['category' => 'koko']) }}">Koko</a></div>
+            <div class="product-item"><a href="{{ route('listhijab', ['category' => 'hijab']) }}">Hijab</a></div>
         </div>
     </div>
 </body>
