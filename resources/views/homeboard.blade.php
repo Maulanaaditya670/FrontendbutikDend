@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Gamis</title>
+    <title>Home</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -76,9 +76,35 @@
             border-radius: 5px;
         }
         .table-container {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
+            margin-top: 20px;
+            position: relative;
+        }
+        .table-container .btn {
+            margin-right: 10px;
+        }
+        .table-container table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+        .table-container th, .table-container td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .table-container th {
+            background-color: #f2f2f2;
+        }
+        .table-container tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .table-container .search-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .table-container .search-container input {
+            margin-left: 5px;
         }
     </style>
 </head>
@@ -103,37 +129,44 @@
         </div>
     </div>
     <div class="main-content">
-        <h1>List Produk > Gamis</h1>
+        <h1>Home</h1>
         <div class="table-container">
-            <a href="{{ route('tambahgamis') }}" class="btn btn-primary">Tambah</a>
+            <button class="btn btn-primary">Tambah</button>
             <button class="btn btn-danger">Delete</button>
-            <input type="text" placeholder="Search" style="float: right; margin-bottom: 10px;">
-            <table class="table table-bordered">
+            <div class="search-container">
+                <label for="search">Search: </label>
+                <input type="text" id="search">
+            </div>
+            <table>
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Nama Barang</th>
-                        <th>Kode Barang</th>
-                        <th>Harga Barang</th>
-                        <th>Ukuran Barang</th>
+                        <th>No.</th>
+                        <th>Nama Postingan</th>
+                        <th>Penulis</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($barangs as $index => $barang)
+                    <!-- Example Row -->
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $barang['name'] }}</td>
-                        <td>{{ $barang['kode'] }}</td>
-                        <td>{{ $barang['price'] }}</td>
-                        <td>{{ $barang['size'] }}</td>
+                        <td>1</td>
+                        <td>Contoh Postingan</td>
+                        <td>Deden Ihsan Fauzi</td>
                     </tr>
-                    @endforeach
                 </tbody>
             </table>
-            <div class="pagination">
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
+            <div>
+                <p>Show 
+                    <select>
+                        <option>10</option>
+                        <option>25</option>
+                        <option>50</option>
+                        <option>100</option>
+                    </select> 
+                    entries
+                </p>
+            </div>
+            <div>
+                <p>< 1 2 3 ></p>
             </div>
         </div>
     </div>

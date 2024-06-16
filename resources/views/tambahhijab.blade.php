@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Gamis</title>
+    <title>Tambah Hijab</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -75,10 +75,34 @@
             padding: 20px;
             border-radius: 5px;
         }
-        .table-container {
+        .form-container {
             background-color: #f8f9fa;
             padding: 20px;
             border-radius: 5px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -103,38 +127,23 @@
         </div>
     </div>
     <div class="main-content">
-        <h1>List Produk > Gamis</h1>
-        <div class="table-container">
-            <a href="{{ route('tambahgamis') }}" class="btn btn-primary">Tambah</a>
-            <button class="btn btn-danger">Delete</button>
-            <input type="text" placeholder="Search" style="float: right; margin-bottom: 10px;">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Barang</th>
-                        <th>Kode Barang</th>
-                        <th>Harga Barang</th>
-                        <th>Ukuran Barang</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($barangs as $index => $barang)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $barang['name'] }}</td>
-                        <td>{{ $barang['kode'] }}</td>
-                        <td>{{ $barang['price'] }}</td>
-                        <td>{{ $barang['size'] }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <div class="pagination">
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-            </div>
+        <h1>List Produk > Hijab > Tambah Hijab</h1>
+        <div class="form-container">
+            <form>
+                <label for="nama_barang">Nama Barang</label>
+                <input type="text" id="nama_barang" name="nama_barang">
+                
+                <label for="kode_barang">Kode Barang</label>
+                <input type="text" id="kode_barang" name="kode_barang">
+                
+                <label for="harga_barang">Harga Barang</label>
+                <input type="number" id="harga_barang" name="harga_barang">
+                
+                <label for="ukuran">Ukuran</label>
+                <input type="text" id="ukuran" name="ukuran">
+                
+                <button type="button">Insert Picture</button>
+            </form>
         </div>
     </div>
 </body>

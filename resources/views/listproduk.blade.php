@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Gamis</title>
+    <title>List Produk</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -75,10 +75,22 @@
             padding: 20px;
             border-radius: 5px;
         }
-        .table-container {
-            background-color: #f8f9fa;
+        .product-list {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .product-list .product-item {
+            background-color: #00aaff;
             padding: 20px;
             border-radius: 5px;
+            color: #fff;
+            text-align: center;
+            flex: 1;
+        }
+        .product-list .product-item a {
+            color: #fff;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -103,38 +115,11 @@
         </div>
     </div>
     <div class="main-content">
-        <h1>List Produk > Gamis</h1>
-        <div class="table-container">
-            <a href="{{ route('tambahgamis') }}" class="btn btn-primary">Tambah</a>
-            <button class="btn btn-danger">Delete</button>
-            <input type="text" placeholder="Search" style="float: right; margin-bottom: 10px;">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Barang</th>
-                        <th>Kode Barang</th>
-                        <th>Harga Barang</th>
-                        <th>Ukuran Barang</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($barangs as $index => $barang)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $barang['name'] }}</td>
-                        <td>{{ $barang['kode'] }}</td>
-                        <td>{{ $barang['price'] }}</td>
-                        <td>{{ $barang['size'] }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <div class="pagination">
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-            </div>
+        <h1>List Produk</h1>
+        <div class="product-list">
+            <div class="product-item"><a href="{{ route('barangs.index', ['category' => 'gamis']) }}">Gamis</a></div>
+            <div class="product-item"><a href="{{ route('hijabs.index', ['category' => 'hijab']) }}">Hijab</a></div>
+            <div class="product-item"><a href="{{ route('kokos.index', ['category' => 'koko']) }}">Koko</a></div>
         </div>
     </div>
 </body>

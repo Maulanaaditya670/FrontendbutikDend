@@ -27,7 +27,7 @@ public function store(Request $request)
     // Validate the incoming request
     $request->validate([
         'name' => 'required|string|max:255',
-        'description' => 'required|string|max:255',
+        'kode' => 'required|string|max:255',
         'price' => 'required|numeric',
         'size' => 'required|string|max:255',
         'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -44,7 +44,7 @@ public function store(Request $request)
     // Prepare data to send to the API
     $data = [
         'name' => $request->name,
-        'description' => $request->description,
+        'kode' => $request->kode,
         'price' => $request->price,
         'size' => $request->size,
         'image' => $imageName,

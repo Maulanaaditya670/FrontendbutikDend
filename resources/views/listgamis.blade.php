@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Gamis</title>
+    <title>List Koko</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -105,29 +105,19 @@
     <div class="main-content">
         <h1>List Produk > Gamis</h1>
         <div class="table-container">
-            <a href="{{ route('tambahgamis') }}" class="btn btn-primary">Tambah</a>
+            <button class="btn btn-primary">Tambah</button>
             <button class="btn btn-danger">Delete</button>
             <input type="text" placeholder="Search" style="float: right; margin-bottom: 10px;">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th>No.</th>
                         <th>Nama Barang</th>
                         <th>Kode Barang</th>
-                        <th>Harga Barang</th>
-                        <th>Ukuran Barang</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($barangs as $index => $barang)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $barang['name'] }}</td>
-                        <td>{{ $barang['kode'] }}</td>
-                        <td>{{ $barang['price'] }}</td>
-                        <td>{{ $barang['size'] }}</td>
-                    </tr>
-                    @endforeach
+                    <!-- Data rows go here -->
                 </tbody>
             </table>
             <div class="pagination">

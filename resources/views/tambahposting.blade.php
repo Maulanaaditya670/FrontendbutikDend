@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Tambah Postingan</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -72,6 +72,39 @@
             padding: 20px;
             border-radius: 5px;
         }
+        .post-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .post-container input, .post-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .post-container textarea {
+            height: 150px;
+        }
+        .post-container button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .post-container button:hover {
+            background-color: #0056b3;
+        }
+        .post-container .btn-secondary {
+            background-color: #6c757d;
+            margin-right: 10px;
+        }
+        .post-container .btn-secondary:hover {
+            background-color: #5a6268;
+        }
     </style>
 </head>
 <body>
@@ -95,8 +128,14 @@
         </div>
     </div>
     <div class="main-content">
-        <h1>Administrator</h1>
-        <p>Selamat datang, Deden Ihsan Fauzi</p>
+        <h1>Home > Tambah Postingan</h1>
+        <div class="post-container">
+            <input type="text" placeholder="Judul Postingan....">
+            <input type="text" placeholder="Nama Penulis....">
+            <textarea placeholder="Isi Postingan....."></textarea>
+            <button class="btn btn-secondary">Insert Picture</button>
+            <button class="btn">Post</button>
+        </div>
     </div>
 </body>
 </html>
