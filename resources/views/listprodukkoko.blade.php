@@ -1,4 +1,4 @@
-<!-- resources/views/list-produk.blade.php -->
+<!-- resources/views/listprodukkoko.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,9 +42,23 @@
             background-color: #258FD6;
             color: white;
             cursor: pointer;
+            position: relative;
         }
         .category-buttons button.active {
             background-color: #1E5DA5;
+        }
+        .category-buttons button.active::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            border-bottom: 2px solid white;
+            border-radius: 50px;
+            box-shadow: 0 0 5px white;
         }
         .product-card {
             background-color: #fff;
@@ -87,7 +101,7 @@
                     <a class="nav-link" href="{{ route('profile') }}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('list-produk') }}">List Poduk</a>
+                    <a class="nav-link active" href="{{ route('list-produk') }}">List Produk</a>
                 </li>
             </ul>
             <form class="form-inline ml-auto search-box">
@@ -98,9 +112,9 @@
 
     <div class="container mt-5">
         <div class="category-buttons">
-            <button class="active">Hijab</button>
+            <button id="hijab-button">Hijab</button>
             <button id="gamis-button">Gamis</button>
-            <button id="koko-button">Baju Koko</button>
+            <button class="active">Baju Koko</button>
         </div>
 
         <div class="row">
@@ -183,11 +197,11 @@
         </nav>
     </div>
     <script>
+        document.getElementById('hijab-button').addEventListener('click', function() {
+            window.location.href = '{{ route("list-produk") }}'; // Replace with your actual route
+        });
         document.getElementById('gamis-button').addEventListener('click', function() {
             window.location.href = '{{ route("list-produkgamis") }}'; // Replace with your actual route
-        });
-        document.getElementById('koko-button').addEventListener('click', function() {
-            window.location.href = '{{ route("listprodukkoko") }}'; // Replace with your actual route
         });
     </script>
 </body>
