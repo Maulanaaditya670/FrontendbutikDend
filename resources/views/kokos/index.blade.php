@@ -116,6 +116,7 @@
                         <th>Kode Barang</th>
                         <th>Harga Barang</th>
                         <th>Ukuran Barang</th>
+                        <th>Gambar Barang</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -126,6 +127,7 @@
                         <td>{{ $koko['kode'] }}</td>
                         <td>{{ $koko['price'] }}</td>
                         <td>{{ $koko['size'] }}</td>
+                        <td>{{ $koko['image'] }}</td>
                     </tr>
                     @endforeach
                 </tbody>
