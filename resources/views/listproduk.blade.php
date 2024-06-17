@@ -100,7 +100,7 @@
     </div>
     <div class="sidebar">
         <div class="profile">
-            <img src="/path/to/profile.jpg" alt="Profile">
+            <img src="{{ asset('images/user.png') }}" alt="Profile">
             <div>
                 <p>Deden Ihsan Fauzi</p>
                 <p>Administrator</p>

@@ -1,10 +1,9 @@
-<!-- resources/views/list-produkgamis.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Produk</title>
+    <title>List Gamis</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -42,23 +41,9 @@
             background-color: #258FD6;
             color: white;
             cursor: pointer;
-            position: relative;
         }
         .category-buttons button.active {
             background-color: #1E5DA5;
-        }
-        .category-buttons button.active::after {
-            content: "";
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: white;
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            border-bottom: 2px solid white;
-            border-radius: 50px;
-            box-shadow: 0 0 5px white;
         }
         .product-card {
             background-color: #fff;
@@ -101,7 +86,7 @@
                     <a class="nav-link" href="{{ route('profile') }}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('list-produk') }}">List Produk</a>
+                    <a class="nav-link active" href="{{ route('list-produk') }}">List Poduk</a>
                 </li>
             </ul>
             <form class="form-inline ml-auto search-box">
@@ -109,71 +94,16 @@
             </form>
         </div>
     </nav>
-
+    
     <div class="container mt-5">
         <div class="category-buttons">
-            <button>Hijab</button>
+            <button id="hijab-button">Hijab</button>
             <button class="active">Gamis</button>
-            <button>Baju Koko</button>
+            <button id="koko-button">Baju Koko</button>
         </div>
 
-        <div class="row">
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
+        <div class="row" id="product-container">
+            <!-- Product cards will be inserted here by JavaScript -->
         </div>
     </div>
     
@@ -196,5 +126,49 @@
             </ul>
         </nav>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            fetchProducts();
+
+            function fetchProducts() {
+                $.ajax({
+                    url: 'http://localhost:8002/api/barangs', // Replace with your Lumen API endpoint
+                    method: 'GET',
+                    success: function(data) {
+                        displayProducts(data);
+                    },
+                    error: function(error) {
+                        console.error('Error fetching products:', error);
+                    }
+                });
+            }
+
+            function displayProducts(products) {
+                const productContainer = $('#product-container');
+                productContainer.empty(); // Clear existing products
+
+                products.forEach(product => {
+                    const productCard = `
+                        <div class="col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="${product.image_url}" alt="${product.name}" class="img-fluid">
+                                <h5>${product.name}</h5>
+                                <p>Rp. ${product.price}</p>
+                            </div>
+                        </div>
+                    `;
+                    productContainer.append(productCard);
+                });
+            }
+        });
+        document.getElementById('hijab-button').addEventListener('click', function() {
+            window.location.href = '{{ route("list-produk") }}'; // Replace with your actual route
+        });
+        document.getElementById('koko-button').addEventListener('click', function() {
+            window.location.href = '{{ route("listprodukkoko") }}'; // Replace with your actual route
+        });
+    </script>
 </body>
 </html>

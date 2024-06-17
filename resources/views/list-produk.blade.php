@@ -1,4 +1,3 @@
-<!-- resources/views/list-produk.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,67 +98,12 @@
     <div class="container mt-5">
         <div class="category-buttons">
             <button class="active">Hijab</button>
-            <button>Gamis</button>
-            <button>Baju Koko</button>
+            <button id="gamis-button">Gamis</button>
+            <button id="koko-button">Baju Koko</button>
         </div>
 
-        <div class="row">
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
-                    <h5>Nama</h5>
-                    <p>Rp. 25,000</p>
-                </div>
-            </div>
+        <div class="row" id="product-container">
+            <!-- Product cards will be inserted here by JavaScript -->
         </div>
     </div>
     
@@ -182,5 +126,49 @@
             </ul>
         </nav>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            fetchProducts();
+
+            function fetchProducts() {
+                $.ajax({
+                    url: 'http://localhost:8002/api/hijabs', // Replace with your Lumen API endpoint
+                    method: 'GET',
+                    success: function(data) {
+                        displayProducts(data);
+                    },
+                    error: function(error) {
+                        console.error('Error fetching products:', error);
+                    }
+                });
+            }
+
+            function displayProducts(products) {
+                const productContainer = $('#product-container');
+                productContainer.empty(); // Clear existing products
+
+                products.forEach(product => {
+                    const productCard = `
+                        <div class="col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="${product.image_url}" alt="${product.name}" class="img-fluid">
+                                <h5>${product.name}</h5>
+                                <p>Rp. ${product.price}</p>
+                            </div>
+                        </div>
+                    `;
+                    productContainer.append(productCard);
+                });
+            }
+        });
+        document.getElementById('gamis-button').addEventListener('click', function() {
+            window.location.href = '{{ route("list-produkgamis") }}'; // Replace with your actual route
+        });
+        document.getElementById('koko-button').addEventListener('click', function() {
+            window.location.href = '{{ route("listprodukkoko") }}'; // Replace with your actual route
+        });
+    </script>
 </body>
 </html>

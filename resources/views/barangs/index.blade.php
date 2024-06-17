@@ -88,7 +88,7 @@
     </div>
     <div class="sidebar">
         <div class="profile">
-            <img src="/path/to/profile.jpg" alt="Profile">
+            <img src="{{ asset('images/user.png') }}" alt="Profile">
             <div>
                 <p>Deden Ihsan Fauzi</p>
                 <p>Administrator</p>
@@ -106,7 +106,6 @@
         <h1>List Produk > Gamis</h1>
         <div class="table-container">
             <a href="{{ route('tambahgamis') }}" class="btn btn-primary">Tambah</a>
-            <button class="btn btn-danger">Delete</button>
             <input type="text" placeholder="Search" style="float: right; margin-bottom: 10px;">
             <table class="table table-bordered">
                 <thead>
@@ -116,10 +115,8 @@
                         <th>Kode Barang</th>
                         <th>Harga Barang</th>
                         <th>Ukuran Barang</th>
-<<<<<<< HEAD
                         <th>Gambar Barang</th>
-=======
->>>>>>> 0d252db (menambahkan tampilan list produk dll.)
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,10 +127,10 @@
                         <td>{{ $barang['kode'] }}</td>
                         <td>{{ $barang['price'] }}</td>
                         <td>{{ $barang['size'] }}</td>
-<<<<<<< HEAD
                         <td>{{ $barang['image'] }}</td>
-=======
->>>>>>> 0d252db (menambahkan tampilan list produk dll.)
+                        <td>
+                            <button class="btn btn-danger" onclick="deleteBarang({{ $barang['id'] }})">Delete</button>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -145,5 +142,31 @@
             </div>
         </div>
     </div>
+    <script>
+        async function deleteBarang(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus barang ini?')) {
+                try {
+                    const response = await fetch(`http://localhost:8002/api/barangs/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        alert('Barang berhasil dihapus');
+                        location.reload(); // Refresh halaman setelah penghapusan berhasil
+                    } else {
+                        const errorText = await response.text(); // Baca teks respons
+                        console.error('Gagal menghapus barang:', errorText);
+                        alert('Gagal menghapus barang: ' + errorText);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat menghapus barang: ' + error.message);
+                }
+            }
+        }
+    </script>
 </body>
 </html>
