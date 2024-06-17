@@ -116,6 +116,10 @@
                         <th>Kode Barang</th>
                         <th>Harga Barang</th>
                         <th>Ukuran Barang</th>
+<<<<<<< HEAD
+                        <th>Gambar Barang</th>
+=======
+>>>>>>> 0d252db (menambahkan tampilan list produk dll.)
                     </tr>
                 </thead>
                 <tbody>
@@ -126,6 +130,10 @@
                         <td>{{ $hijab['kode'] }}</td>
                         <td>{{ $hijab['price'] }}</td>
                         <td>{{ $hijab['size'] }}</td>
+<<<<<<< HEAD
+                        <td>{{ $hijab['image'] }}</td>
+=======
+>>>>>>> 0d252db (menambahkan tampilan list produk dll.)
                     </tr>
                     @endforeach
                 </tbody>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Hijab</title>
+    <title>Tambah Gamis</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -93,6 +93,9 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+        .form-container input[type="file"] {
+            margin-bottom: 10px;
+        }
         .form-container button {
             padding: 10px 20px;
             background-color: #007bff;
@@ -119,32 +122,68 @@
             </div>
         </div>
         <div class="menu">
-            <a href="{{ route('dashboard') }}" >Dashboard</a>
-            <a href="{{ route('homeboard') }}" >Home</a>
-            <a href="{{ route('profile') }}" >Profile</a>
-            <a href="{{ route('listproduk') }}" >List Produk</a>
-            <a href="{{ route('login') }}" >Logout</a>
+            <a href="{{ route('dashboard') }}">Dashboard</a>
+            <a href="{{ route('homeboard') }}">Home</a>
+            <a href="{{ route('profile') }}">Profile</a>
+            <a href="{{ route('listproduk') }}">List Produk</a>
+            <a href="{{ route('login') }}">Logout</a>
         </div>
     </div>
     <div class="main-content">
-        <h1>List Produk > Hijab > Tambah Hijab</h1>
+<<<<<<< HEAD
+        <h1>List Produk > Gamis > Tambah Hijab</h1>
+=======
+        <h1>List Produk > Gamis > Tambah Gamis</h1>
+>>>>>>> 0d252db (menambahkan tampilan list produk dll.)
         <div class="form-container">
-            <form>
-                <label for="nama_barang">Nama Barang</label>
-                <input type="text" id="nama_barang" name="nama_barang">
+            <form id="tambahHijabForm" enctype="multipart/form-data">
+                <label for="name">Nama Barang</label>
+                <input type="text" id="name" name="name">
                 
-                <label for="kode_barang">Kode Barang</label>
-                <input type="text" id="kode_barang" name="kode_barang">
+                <label for="kode">Kode Barang</label>
+                <input type="text" id="kode" name="kode">
                 
-                <label for="harga_barang">Harga Barang</label>
-                <input type="number" id="harga_barang" name="harga_barang">
+                <label for="price">Harga Barang</label>
+                <input type="number" id="price" name="price">
                 
-                <label for="ukuran">Ukuran</label>
-                <input type="text" id="ukuran" name="ukuran">
+                <label for="size">Ukuran</label>
+                <input type="text" id="size" name="size">
                 
-                <button type="button">Insert Picture</button>
+                <label for="image">Insert Picture</label>
+                <input type="file" id="image" name="image">
+                
+                <button type="submit">Submit</button>
             </form>
         </div>
     </div>
+    <script>
+        document.getElementById('tambahHijabForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(this);
+    
+    try {
+        const response = await fetch('http://localhost:8002/api/hijabs', {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (response.ok) {
+            const result = await response.json();
+            alert('Data berhasil disimpan');
+            console.log(result);
+        } else {
+            const errorText = await response.text(); // Baca teks respons
+            console.error('Gagal menyimpan data:', errorText);
+            alert('Gagal menyimpan data: ' + errorText);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Terjadi kesalahan saat menyimpan data: ' + error.message);
+    }
+});
+
+
+    </script>
 </body>
 </html>
