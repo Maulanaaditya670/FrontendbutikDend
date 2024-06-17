@@ -68,3 +68,28 @@ Route::view('/listhijab', 'listhijab')->name('listhijab');
 Route::view('/tambahgamis', 'tambahgamis')->name('tambahgamis');
 Route::view('/tambahkoko', 'tambahkoko')->name('tambahkoko');
 Route::view('/tambahhijab', 'tambahhijab')->name('tambahhijab');
+
+// routes/web.php
+Route::get('/list-produkgamis', function () {
+    return view('list-produkgamis');
+})->name('list-produkgamis');
+
+Route::get('/listprodukkoko', function () {
+    return view('listprodukkoko');
+})->name('listprodukkoko');
+
+// routes/web.php
+Route::get('/lpkoko', function () {
+    return view('lpkoko');
+});
+
+// routes/web.php
+Route::get('/lpgamis', function () {
+    return view('lpgamis');
+});
+
+// routes/web.php
+Route::get('/lphijab', function () {
+    return view('lphijab');
+});
+

@@ -116,7 +116,10 @@
                         <th>Kode Barang</th>
                         <th>Harga Barang</th>
                         <th>Ukuran Barang</th>
+<<<<<<< HEAD
                         <th>Gambar Barang</th>
+=======
+>>>>>>> 0d252db (menambahkan tampilan list produk dll.)
                     </tr>
                 </thead>
                 <tbody>
@@ -127,7 +130,10 @@
                         <td>{{ $koko['kode'] }}</td>
                         <td>{{ $koko['price'] }}</td>
                         <td>{{ $koko['size'] }}</td>
+<<<<<<< HEAD
                         <td>{{ $koko['image'] }}</td>
+=======
+>>>>>>> 0d252db (menambahkan tampilan list produk dll.)
                     </tr>
                     @endforeach
                 </tbody>
