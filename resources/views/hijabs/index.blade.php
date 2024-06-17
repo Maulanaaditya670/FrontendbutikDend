@@ -98,7 +98,7 @@
             <a href="{{ route('dashboard') }}" >Dashboard</a>
             <a href="{{ route('homeboard') }}" >Home</a>
             <a href="{{ route('profile') }}" >Profile</a>
-            <a href="{{ route('listproduk') }}" >List Hijabs</a>
+            <a href="{{ route('listproduk') }}" >List Produk</a>
             <a href="{{ route('login') }}" >Logout</a>
         </div>
     </div>
@@ -115,6 +115,7 @@
                         <th>Kode Barang</th>
                         <th>Harga Barang</th>
                         <th>Ukuran Barang</th>
+                        <th>Gambar Barang</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -126,6 +127,7 @@
                         <td>{{ $hijab['kode'] }}</td>
                         <td>{{ $hijab['price'] }}</td>
                         <td>{{ $hijab['size'] }}</td>
+                        <td>{{ $hijab['image'] }}</td>
                         <td>
                             <button class="btn btn-danger" onclick="deleteHijab({{ $hijab['id'] }})">Delete</button>
                         </td>
