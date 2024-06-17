@@ -122,19 +122,11 @@
             </div>
         </div>
         <div class="menu">
-<<<<<<< HEAD
             <a href="{{ route('dashboard') }}">Dashboard</a>
             <a href="{{ route('homeboard') }}">Home</a>
             <a href="{{ route('profile') }}">Profile</a>
             <a href="{{ route('listproduk') }}">List Produk</a>
             <a href="{{ route('login') }}">Logout</a>
-=======
-            <a href="{{ route('dashboard') }}" >Dashboard</a>
-            <a href="{{ route('homeboard') }}" >Home</a>
-            <a href="{{ route('profile') }}" >Profile</a>
-            <a href="{{ route('listproduk') }}" >List Produk</a>
-            <a href="{{ route('login') }}" >Logout</a>
->>>>>>> 0d252db (menambahkan tampilan list produk dll.)
         </div>
     </div>
     <div class="main-content">

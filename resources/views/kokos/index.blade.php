@@ -95,18 +95,17 @@
             </div>
         </div>
         <div class="menu">
-            <a href="{{ route('dashboard') }}">Dashboard</a>
-            <a href="{{ route('homeboard') }}">Home</a>
-            <a href="{{ route('profile') }}">Profile</a>
-            <a href="{{ route('listproduk') }}">List Produk</a>
-            <a href="{{ route('login') }}">Logout</a>
+            <a href="{{ route('dashboard') }}" >Dashboard</a>
+            <a href="{{ route('homeboard') }}" >Home</a>
+            <a href="{{ route('profile') }}" >Profile</a>
+            <a href="{{ route('listproduk') }}" >List Produk</a>
+            <a href="{{ route('login') }}" >Logout</a>
         </div>
     </div>
     <div class="main-content">
         <h1>List Produk > Koko</h1>
         <div class="table-container">
             <a href="{{ route('tambahkoko') }}" class="btn btn-primary">Tambah</a>
-            <button class="btn btn-danger">Delete</button>
             <input type="text" placeholder="Search" style="float: right; margin-bottom: 10px;">
             <table class="table table-bordered">
                 <thead>
@@ -116,10 +115,7 @@
                         <th>Kode Barang</th>
                         <th>Harga Barang</th>
                         <th>Ukuran Barang</th>
-<<<<<<< HEAD
-                        <th>Gambar Barang</th>
-=======
->>>>>>> 0d252db (menambahkan tampilan list produk dll.)
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,10 +126,9 @@
                         <td>{{ $koko['kode'] }}</td>
                         <td>{{ $koko['price'] }}</td>
                         <td>{{ $koko['size'] }}</td>
-<<<<<<< HEAD
-                        <td>{{ $koko['image'] }}</td>
-=======
->>>>>>> 0d252db (menambahkan tampilan list produk dll.)
+                        <td>
+                            <button class="btn btn-danger" onclick="deleteKoko({{ $koko['id'] }})">Delete</button>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -145,5 +140,28 @@
             </div>
         </div>
     </div>
+    <script>
+        async function deleteKoko(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus koko ini?')) {
+                try {
+                    const response = await fetch(`http://localhost:8002/api/kokos/${id}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        alert('Koko berhasil dihapus');
+                        location.reload(); // Refresh halaman setelah penghapusan berhasil
+                    } else {
+                        const errorText = await response.text(); // Baca teks respons
+                        console.error('Gagal menghapus koko:', errorText);
+                        alert('Gagal menghapus koko: ' + errorText);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat menghapus koko: ' + error.message);
+                }
+            }
+        }
+    </script>
 </body>
 </html>
