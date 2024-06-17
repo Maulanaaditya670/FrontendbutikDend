@@ -130,11 +130,7 @@
         </div>
     </div>
     <div class="main-content">
-<<<<<<< HEAD
-        <h1>List Produk > Gamis > Tambah Hijab</h1>
-=======
-        <h1>List Produk > Gamis > Tambah Gamis</h1>
->>>>>>> 0d252db (menambahkan tampilan list produk dll.)
+        <h1>List Produk > Hijab > Tambah Hijab</h1>
         <div class="form-container">
             <form id="tambahHijabForm" enctype="multipart/form-data">
                 <label for="name">Nama Barang</label>

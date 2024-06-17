@@ -115,6 +115,7 @@
                         <th>Kode Barang</th>
                         <th>Harga Barang</th>
                         <th>Ukuran Barang</th>
+                        <th>Gambar Barang</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -126,6 +127,7 @@
                         <td>{{ $barang['kode'] }}</td>
                         <td>{{ $barang['price'] }}</td>
                         <td>{{ $barang['size'] }}</td>
+                        <td>{{ $barang['image'] }}</td>
                         <td>
                             <button class="btn btn-danger" onclick="deleteBarang({{ $barang['id'] }})">Delete</button>
                         </td>
@@ -145,9 +147,12 @@
             if (confirm('Apakah Anda yakin ingin menghapus barang ini?')) {
                 try {
                     const response = await fetch(`http://localhost:8002/api/barangs/${id}`, {
-                        method: 'DELETE'
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
                     });
-    
+
                     if (response.ok) {
                         alert('Barang berhasil dihapus');
                         location.reload(); // Refresh halaman setelah penghapusan berhasil
