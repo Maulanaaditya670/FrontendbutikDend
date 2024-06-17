@@ -115,6 +115,7 @@
                         <th>Kode Barang</th>
                         <th>Harga Barang</th>
                         <th>Ukuran Barang</th>
+                        <th>Gambar Barang</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -126,6 +127,7 @@
                         <td>{{ $koko['kode'] }}</td>
                         <td>{{ $koko['price'] }}</td>
                         <td>{{ $koko['size'] }}</td>
+                        <td>{{ $koko['image'] }}</td>
                         <td>
                             <button class="btn btn-danger" onclick="deleteKoko({{ $koko['id'] }})">Delete</button>
                         </td>
