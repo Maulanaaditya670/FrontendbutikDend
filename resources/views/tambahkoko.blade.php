@@ -123,7 +123,6 @@
         </div>
         <div class="menu">
             <a href="{{ route('dashboard') }}">Dashboard</a>
-            <a href="{{ route('homeboard') }}">Home</a>
             <a href="{{ route('profile') }}">Profile</a>
             <a href="{{ route('listproduk') }}">List Produk</a>
             <a href="{{ route('login') }}">Logout</a>

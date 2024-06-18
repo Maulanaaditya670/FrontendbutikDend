@@ -108,7 +108,6 @@
         </div>
         <div class="menu">
             <a href="{{ route('dashboard') }}" >Dashboard</a>
-            <a href="{{ route('homeboard') }}" >Home</a>
             <a href="{{ route('profile') }}" >Profile</a>
             <a href="{{ route('listproduk') }}" >List Produk</a>
             <a href="{{ route('login') }}" >Logout</a>
@@ -117,8 +116,8 @@
     <div class="main-content">
         <h1>List Produk</h1>
         <div class="product-list">
-            <div class="product-item"><a href="{{ route('barangs.index', ['category' => 'gamis']) }}">Gamis</a></div>
             <div class="product-item"><a href="{{ route('hijabs.index', ['category' => 'hijab']) }}">Hijab</a></div>
+            <div class="product-item"><a href="{{ route('barangs.index', ['category' => 'gamis']) }}">Gamis</a></div>
             <div class="product-item"><a href="{{ route('kokos.index', ['category' => 'koko']) }}">Koko</a></div>
         </div>
     </div>
