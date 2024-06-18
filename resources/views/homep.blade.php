@@ -1,4 +1,3 @@
-<!-- resources/views/homep.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +37,21 @@
             margin-bottom: 20px;
             text-align: center;
             padding: 50px 0;
+            position: relative;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .card-body {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 0;
         }
         .pagination-container {
             position: absolute;
@@ -83,6 +97,7 @@
         <div class="row">
             <div class="col-md-6 col-lg-3">
                 <div class="card">
+                    <img src="{{ asset('images/hijab1.jpg') }}" alt="Produk Terlaris">
                     <div class="card-body">
                         Produk Terlaris
                     </div>
@@ -90,6 +105,7 @@
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="card">
+                    <img src="{{ asset('images/hijab1.jpg') }}" alt="Rekomendasi Hijab">
                     <div class="card-body">
                         Rekomendasi Hijab
                     </div>
@@ -97,6 +113,7 @@
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="card">
+                    <img src="{{ asset('images/koko1.png') }}" alt="Rekomendasi Baju Koko">
                     <div class="card-body">
                         Rekomendasi Baju Koko
                     </div>
@@ -104,6 +121,7 @@
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="card">
+                    <img src="{{ asset('images/gamis2.jpg') }}" alt="Rekomendasi Gamis">
                     <div class="card-body">
                         Rekomendasi Gamis
                     </div>
